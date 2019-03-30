@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+  	<iframe id="iframe" src="http://localhost:8001/c.html" style="display: none;"></iframe>
+    <script>
+    	//2.2 location.hash + iframe
+    	var iframe = document.getElementById('iframe');
+    	var originURL = iframe.src;
+    	
+    	window.onhashchange = function() {
+			  var message = decodeURIComponent(window.location.hash).split('#')[1];
+			  iframe.src = originURL + "# <- b.html <- a.html data " + message;
+			}
+    	
+    	//2.3 window.name + iframe
+    	window.name = 'something from http://localhost:8002/b.html';
+    	
+    	//2.4 window.postMessage
+    	window.addEventListener('message', function(event) {
+    		if(event.origin !== 'http://localhost:8001') return;
+    		//event.source 是对发送消息的窗口对象的引用。
+    		//console.log(event.source === window.parent);
+    		event.source.postMessage('Nice to ment you! ' + event.data, event.origin);
+    	});
+    </script>
+  </body>
+</html>
