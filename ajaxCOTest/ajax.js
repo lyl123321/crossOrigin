@@ -1,3 +1,8 @@
+/* 同源策略 SOP（Same origin policy）限制以下几种行为：
+ * 1.) Cookie、LocalStorage 和 IndexDB 无法读取
+ * 2.) DOM 和 Js对象无法获得
+ * 3.) AJAX 请求不能发送
+ */
 //简单的跨域请求jsonp即可，复杂的cors，窗口之间JS跨域postMessage，开发环境下接口跨域用nginx反向代理或node中间件比较方便。
 //1、跨域发起接口请求;
 //2、跨域获取 DOM 或 JS 对象;
@@ -85,9 +90,9 @@ iframePost({
  * 跨域发起接口请求的标准解决方案。
  * CORS 请求默认不发送 Cookie 和 HTTP 认证信息，如需发送 Cookie，则要求前后端设置携带 cookie。
  * 需要注意的是，如果要发送 Cookie，Access-Control-Allow-Origin 就不能设为星号，必须指定明确的、与请求网页一致的域名。
- * 同时，Cookie 依然遵循同源政策！！，只有用服务器域名设置的 Cookie 才会上传，其他域名的 Cookie 并不会上传，
+ * 同时，Cookie 依然遵循同源政策，只有用服务器域名设置的 Cookie 才会上传，其他域名的 Cookie 并不会上传，
  * 且（跨源）原网页代码中的 document.cookie 也无法读取服务器域名下的Cookie。
- * 而且服务器要求浏览器设置的 cookie 也是服务器源对应的 cookie。
+ * 而且服务器要求浏览器设置的 cookie 也是服务器源对应的 cookie。(不清楚，待试验！！！)
  */
 /* 1.4.1 简单请求
  * 1、method: HEAD, GET 和 POST;
