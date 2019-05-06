@@ -9,7 +9,7 @@ const ajaxCO = {
 	iframePost(req, res, next) {
 		const body = JSON.stringify(req.body);
 		res.set('Content-Type', 'text/html');
-  	res.status(200).send(body);
+  		res.status(200).send(body);
 	},
 	
 	simplyCORS(req, res) {
@@ -20,7 +20,7 @@ const ajaxCO = {
 		  'Access-Control-Allow-Origin': 'http://127.0.0.1:8020'
 		});
 		res.cookie('lyl', '123456', { domain: 'http://localhost:8081', path: '/', HttpOnly: true});
-  	res.status(200).send(body);
+  		res.status(200).send(body);
 	},
 	
 	preDetect(req, res) {
@@ -31,7 +31,7 @@ const ajaxCO = {
 		  'Access-Control-Allow-Credentials': 'true',
 		  'Access-Control-Max-Age': '1728000'
 		});
-  	res.status(200).send();
+  		res.status(200).send();
 	},
 	
 	unsimplyCORS(req, res) {
@@ -41,7 +41,7 @@ const ajaxCO = {
 		  'Access-Control-Allow-Credentials': 'true',
 		  'Access-Control-Allow-Origin': 'http://127.0.0.1:8020'
 		});
-  	res.status(200).send(body);
+  		res.status(200).send(body);
 	},
 	
 	proxy(req, res) {

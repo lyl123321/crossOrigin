@@ -12,11 +12,11 @@
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
    </style>
-   <script src="vue.js"></script>
+   <script src="lib/vue.js"></script>
   </head>
   <body>
   	<div id="app">
-	  	<form method="post" enctype="application/x-www-form-urlencoded" action="http://localhost:8001/search">
+	  	<form method="get" action="http://localhost:8001/search">
 	      <input type="text" name="keyword" v-model="keyword" placeholder="keyword for search" />
 	      <button @click="submit($event)">Send</button>
 	    </form>
@@ -24,6 +24,7 @@
 			  您搜索的关键词是：{{keyword}}
 			</div>
   	</div>
+		<a href="redirect">跳转</a>
     <script src="a.js"></script>
   </body>
 </html>
